@@ -1,38 +1,39 @@
 package com.crypto.transformer;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class TextTransformer {
+
     public String moveLetterOnRightPositions(int pos, String text) {
-
-        //pos = 2 a  =>  c
-        //iterate text using prepareAlphabet method
-
-        return "";
-    }
-
-    public String moveLetterOnLeftPositions(int pos, String text) {
-
-        //pos = 2 a  =>  c
-        //iterate text using prepareAlphabet method
-
-        return "";
-    }
-
-    /*
-     * mode - 0: left moving; 1:right moving
-     */
-    private Map<String, String> prepareAlphabet(int move, int mode) {
-        // if move = 2;
-        Map<String, String> letters = new HashMap<>();
-        if (mode == 1) {
-            letters.put("A", "C");
-        } else {
-            letters.put("Z", "A");
+        StringBuilder encryptFile = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            if (Character.isLetter(c)) {
+                char moveChar = (char) (c + pos);
+                if ((Character.isLowerCase(c) && moveChar > 'z') ||
+                        (Character.isUpperCase(c) && moveChar > 'Z')) {
+                    moveChar = (char) (c - (26 - pos));
+                }
+                encryptFile.append(moveChar);
+            } else {
+                encryptFile.append(c);
+            }
         }
-
-        return letters;
+        return encryptFile.toString() + String.valueOf((char) ('!' + pos));
     }
 
+    public String moveLetterOnLeftPositions(int poss, String text) {
+        StringBuilder decryptFile = new StringBuilder();
+        for (char c : text.toCharArray()) {
+            if (Character.isLetter(c)) {
+                char moveChar = (char) (c - poss);
+                if ((Character.isLowerCase(c) && moveChar < 'a') ||
+                        (Character.isUpperCase(c) && moveChar < 'A')) {
+                    moveChar = (char) (c + (26 - poss));
+                }
+                decryptFile.append(moveChar);
+            } else {
+                decryptFile.append(c);
+            }
+        }
+        decryptFile.deleteCharAt(decryptFile.length() - 1);
+        return decryptFile.toString();
+    }
 }
