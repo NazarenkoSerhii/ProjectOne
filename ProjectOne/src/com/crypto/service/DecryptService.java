@@ -30,6 +30,4 @@ public class DecryptService {
             System.out.println(e.getMessage());
         }
     }
-
 }
-

@@ -25,7 +25,7 @@ public class InputValidation {
             }
         }
         if (!isCommandExist) {
-            throw new InvalidArgumentException("Command is not exist!");
+            System.err.println("Command is not exist!");
         }
     }
 
@@ -40,8 +40,8 @@ public class InputValidation {
 
     public static void validateKey(String key) {
         int k = Integer.parseInt(key);
-        if (k > 20 | k < 0) {
-            throw new InvalidArgumentException("Error! Enter another key...");
+        if (k > 26 | k < 0) {
+            System.err.println("Error! Enter another key...");
         }
     }
 }

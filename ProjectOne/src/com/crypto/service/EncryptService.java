@@ -1,6 +1,7 @@
 package com.crypto.service;
 
 import com.crypto.transformer.TextTransformer;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -11,7 +12,6 @@ public class EncryptService {
     private StringBuilder dataFromEncryptFileBuilder = new StringBuilder();
 
     public void encrypt(File file, int key) {
-
         try (FileReader fileReader = new FileReader(file)) {
             int data;
             while ((data = fileReader.read()) != -1) {
@@ -31,13 +31,3 @@ public class EncryptService {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
