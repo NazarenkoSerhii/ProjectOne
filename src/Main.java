@@ -3,9 +3,9 @@ import RunService.Run;
 
 
 public class Main {
-
     public static void main(String[] args) {
-        Run.run();
+      Run runApp = new Run();
+      runApp.run();
     }
 }
 
