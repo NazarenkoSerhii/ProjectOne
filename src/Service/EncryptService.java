@@ -25,6 +25,7 @@ public class EncryptService {
 
         try (FileWriter fileWriter = new FileWriter(fileName)) {
             fileWriter.write(encryptText);
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
